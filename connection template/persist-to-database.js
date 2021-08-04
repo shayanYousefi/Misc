@@ -31,11 +31,11 @@ async function run() {
 
 		while (await questionCursor.hasNext()) {
 
-			//the docuemnt 
+			//the document
 			let doc = await questionCursor.next();
 			console.log(doc);
 
-			//change fields of document (doc) that needs updateing
+			//change fields of document (doc) that needs updating
 
 
 			bulk
