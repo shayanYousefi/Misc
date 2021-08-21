@@ -153,9 +153,9 @@ async function sendReportRequest() {
     let cursor = client.db(db_name).collection(collection_name)
         .find({
             exam_id: "610e88c167a9312bc560e722",
-            //finished_at:{
-            //	$ne:null
-            //}
+            finished_at:{
+            	$ne:null
+            }
         });
 
 
