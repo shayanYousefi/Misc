@@ -87,7 +87,7 @@ async function updateFinishedAt() {
             },
         },
         {
-            $unwind: "$temp_data",
+            $unwind: { path: "$temp_data", preserveNullAndEmptyArrays: true }
         },
         {
             $group: {
