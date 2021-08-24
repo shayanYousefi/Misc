@@ -6,5 +6,9 @@
     "collection":"collectionName",
     "username": "username",
     "password": "password"
+  },
+  "server": {
+    "ip": "localhost",
+    "port": 3000
   }
 }
