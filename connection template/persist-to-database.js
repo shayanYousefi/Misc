@@ -168,7 +168,7 @@ async function sendReportRequest() {
     while (await cursor.hasNext()) {
         let doc = await cursor.next();
 
-        requests.push(`http://localhost:3000/psychometric/exam-user/${doc._id.toString()}`);
+        requests.push(`http://${config.server.ip}:${config.server.port}/psychometric/exam-user/${doc._id.toString()}`);
         count++;
 
     }
