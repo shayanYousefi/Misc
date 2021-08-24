@@ -5,7 +5,8 @@
     "db_name": "dbName",
     "collection":"collectionName",
     "username": "username",
-    "password": "password"
+    "password": "password",
+    "authDB": "admin"
   },
   "server": {
     "ip": "localhost",
