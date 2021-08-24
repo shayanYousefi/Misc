@@ -7,9 +7,9 @@ const db_name = config.db.db_name;
 const collection_name = config.db.collection;
 let uri;
 if (config.db.username) {
-    uri = `mongodb://${config.db.username}:${config.db.password}@${config.db.ip}:${config.db.port}/${db_name}`;
+    uri = `mongodb://${config.db.username}:${config.db.password}@${config.db.ip}:${config.db.port}/${config.db.authDB ? config.db.authDB : ""}`;
 } else {
-    uri = `mongodb://${config.db.ip}:${config.db.port}/${db_name}`;
+    uri = `mongodb://${config.db.ip}:${config.db.port}/${config.db.authDB ? config.db.authDB : ""}`;
 }
 
 
