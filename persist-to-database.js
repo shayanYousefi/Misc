@@ -60,7 +60,7 @@ async function run() {
             let changed = {};
             for (const docKey in doc) {
                 if (doc.hasOwnProperty(docKey)) {
-                    if (/.*forum\.sanatisharif\.ir.*/.test(doc[docKey])) {
+                    if (/.*forum\.sanatisharif\.ir.*/.test(doc[docKey]) && doc._key !== "errors:404") {
                         changed[docKey] = doc[docKey].replace(/forum\.sanatisharif\.ir/g, 'forum.alaatv.com');
                         output[docKey] = doc[docKey];
                         output[docKey + "changed"] = changed[docKey];
