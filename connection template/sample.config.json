@@ -1,8 +1,0 @@
-{
-  "db": {
-    "ip": "localhost",
-    "port": 27017,
-    "db_name": "dbName",
-    "collection":"collectionName"
-  }
-}
