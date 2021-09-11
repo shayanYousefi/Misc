@@ -50,9 +50,11 @@ async function run() {
         let bulk = client.db(db_name).collection(collection_name).initializeUnorderedBulkOp();
 
         let i = 0;
+        let total = 0;
         while (await questionCursor.hasNext()) {
             //the document
             let doc = await questionCursor.next();
+            total++;
             //change fields of document (doc) that needs updating
 
             let found = false;
@@ -65,20 +67,21 @@ async function run() {
                         output[docKey] = doc[docKey];
                         output[docKey + "changed"] = changed[docKey];
                         found = true;
+                        i++;
                     }
                 }
             }
 
-            if (!found) {
-                continue;
-            }
 
-            i++;
-            if (i % 10 === 0) {
+            if (total % 1000 === 0) {
                 progress.render({
                     ...progress.tokens,
-                    status: `${i} documents found`,
+                    status: `${i} found from ${total} searched`,
                 });
+            }
+
+            if (!found) {
+                continue;
             }
 
             bulk
@@ -93,6 +96,7 @@ async function run() {
                     progress.render({
                         ...progress.tokens,
                         processed: progress.tokens.processed + result.result?.nModified,
+                        status: `${i} found from ${total} searched`,
                     });
                 });
                 bulk = client.db(db_name).collection(collection_name).initializeUnorderedBulkOp();
@@ -107,11 +111,15 @@ async function run() {
             progress.render({
                 ...progress.tokens,
                 processed: progress.tokens.processed + result.result.nModified,
+                status: `${i} found from ${total} searched`,
             });
         }
 
         clearInterval(spin);
-        progress.tick(1);
+        progress.tick(1, {
+            ...progress.tokens,
+            status: `${i} document needed modifying from a total of ${total} document`,
+        });
 
         //uncomment code below to persist changes to database
 
