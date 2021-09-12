@@ -3,6 +3,9 @@
     "ip": "localhost",
     "port": 27017,
     "db_name": "dbName",
-    "collection":"collectionName"
+    "collection":"collectionName",
+    "authDB": "admin",
+    "username": "user",
+    "password": "pass"
   }
 }
