@@ -1,4 +1,4 @@
-# Misc
-Misc.
+# Templates
+Templates.
 
 templates or scripts
